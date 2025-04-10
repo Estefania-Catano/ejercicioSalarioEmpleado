@@ -1,21 +1,22 @@
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         /*
-        * Una empresa desea registrar la información de cada empleado
-        * Para ello un empleado debe ingresar con su usuario y contraseña
-        * Una vez ingresado el empleado debe registrar la siguiente información
-        * 1 - Nombre completo
-        * 2 - Documento de identidad
-        * 3 - Valor de la hora
-        * 4 - Cantidad de horas
-        * 5 - Seleccionar un día de descanso a la semana (L-V)
-        * EL sistema le debe mostrar al empleado:
-        * Su salario Neto, Salario Bruto, Deducción por Pensión, Deducción
-        * por salud, auxilio de transporte (si aplica) y bonificación del 10%
-        * si no supera 2 SMMLV (sin incluir auxilio de transporte)
-        * Toda la información del empleado se debe mostrar en un mensaje descriptivo
-        * */
+         * Una empresa desea registrar la información de cada empleado
+         * Para ello un empleado debe ingresar con su usuario y contraseña
+         * Una vez ingresado el empleado debe registrar la siguiente información
+         * 1 - Nombre completo
+         * 2 - Documento de identidad
+         * 3 - Valor de la hora
+         * 4 - Cantidad de horas
+         * 5 - Seleccionar un día de descanso a la semana (L-V)
+         * EL sistema le debe mostrar al empleado:
+         * Su salario Neto, Salario Bruto, Deducción por Pensión, Deducción
+         * por salud, auxilio de transporte (si aplica) y bonificación del 10%
+         * si no supera 2 SMMLV (sin incluir auxilio de transporte)
+         * Toda la información del empleado se debe mostrar en un mensaje descriptivo
+         */
 
         /* Definición y asignación de variables */
         Scanner sc = new Scanner(System.in);
@@ -31,17 +32,17 @@ public class Main {
         double valorHora = 0;
         double cantidadHoras = 0;
         double bonificacionEmpleado = 0;
-        double valorSalarioMinimo =0;
+        double valorSalarioMinimo = 0;
         int auxilioTransporte = 200000;
 
         System.out.print("Ingrese su usuario: ");
         usuarioEmpleado = sc.nextLine();
         System.out.print("Ingrese su contraseña: ");
         contrasenaUsuario = sc.nextLine();
-        if(usuarioEmpleado.equals("admin") && contrasenaUsuario.equals("admin")){
+        if (usuarioEmpleado.equals("admin") && contrasenaUsuario.equals("admin")) {
             System.out.println("Ha ingresado de forma correcta");
             System.out.println("Ingrese el nombre del empelado");
-            nombreEmpleado= sc.nextLine();
+            nombreEmpleado = sc.nextLine();
             System.out.println("Ingrese su documento de identidad");
             documentoIdentidad = sc.nextLine();
             System.out.println("Ingrese el día de descanso (Lunes a viernes)");
@@ -52,24 +53,29 @@ public class Main {
             cantidadHoras = sc.nextDouble();
             System.out.println("Ingrese el valor del salario minimo para este año: ");
             valorSalarioMinimo = sc.nextDouble();
-            salarioBruto = valorHora*cantidadHoras;
-            if (salarioBruto>(valorSalarioMinimo*2)) {
+            salarioBruto = valorHora * cantidadHoras;
+            if (salarioBruto > (valorSalarioMinimo * 2)) {
                 bonificacionEmpleado = 0;
                 auxilioTransporte = 0;
-            } else{
-                bonificacionEmpleado = salarioBruto*0.1;
+            } else {
+                bonificacionEmpleado = salarioBruto * 0.1;
                 auxilioTransporte = 200000;
             }
-            System.out.println("El salario neto es: " + salarioNeto);
+            System.out.println("El empleado: " + nombreEmpleado + " con documento de identidad " + documentoIdentidad
+                    + " tiene un salario el siguiente detalle; /nSalario bruto: " + salarioBruto + "/nSalario neto: "
+                    + salarioNeto + "/nDeducción por salud: " + retencionSalud + "/nDeducción por pensión: "
+                    + retencionPension + "/nAuxilio de transporte: " + auxilioTransporte + "/nBonificación del 10%: "
+                    + bonificacionEmpleado);
         } else {
             System.out.println("Error de credenciales");
         }
 
-        /*if(usuarioEmpleado.equals("admin")){
-            if(contrasenaUsuario.equals("admin")){
-                System.out.println("Bienvenido al sistema");
-            }
-        }*/
+        /*
+         * if(usuarioEmpleado.equals("admin")){
+         * if(contrasenaUsuario.equals("admin")){
+         * System.out.println("Bienvenido al sistema");
+         * }
+         * }
+         */
     }
 }
-
